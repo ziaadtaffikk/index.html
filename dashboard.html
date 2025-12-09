@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Dashboard</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            width: 420px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        input, textarea, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+        button {
+            background: #25D366;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background: #1ebe5d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Customer Contact Form</h2>
+
+    <form id="customerForm">
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="phone" placeholder="Phone Number">
+        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+
+        <button type="submit">Send to WhatsApp</button>
+    </form>
+</div>
+
+<script>
+document.getElementById("customerForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let message = document.getElementById("message").value;
+
+    // Your WhatsApp number in correct international format
+    let yourNumber = "201066169784";
+
+    let text = 
+        "New Customer Message:%0A" +
+        "------------------------%0A" +
+        "Name: " + name + "%0A" +
+        "Email: " + email + "%0A" +
+        "Phone: " + phone + "%0A" +
+        "Message: " + message;
+
+    let url = "https://wa.me/" + yourNumber + "?text=" + text;
+
+    window.open(url, "_blank");
+});
+</script>
+
+</body>
+</html>
